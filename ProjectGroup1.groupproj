@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{64AF5EF7-F115-483E-95B3-C8C512A52F91}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Faylnioqish.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Faylgayozish.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Faylnioqish">
+        <MSBuild Projects="Faylnioqish.dproj"/>
+    </Target>
+    <Target Name="Faylnioqish:Clean">
+        <MSBuild Projects="Faylnioqish.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Faylnioqish:Make">
+        <MSBuild Projects="Faylnioqish.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Faylgayozish">
+        <MSBuild Projects="Faylgayozish.dproj"/>
+    </Target>
+    <Target Name="Faylgayozish:Clean">
+        <MSBuild Projects="Faylgayozish.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Faylgayozish:Make">
+        <MSBuild Projects="Faylgayozish.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Faylnioqish;Faylgayozish"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Faylnioqish:Clean;Faylgayozish:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Faylnioqish:Make;Faylgayozish:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
